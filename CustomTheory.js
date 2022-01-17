@@ -42,17 +42,18 @@ var init = () => {
 
     // c3
     {
-        let getDesc = (level) => "c_3=" + getC3(level).toString(0);
-        c3 = theory.createUpgrade(2, currency, new ExponentialCost(200, Math.log2(9)));
-        c3.getDescription = (_) => Utils.getMath(getDesc(c3.level));
-        c3.getInfo = (amount) => Utils.getMathTo(getInfo(c3.level), getInfo(c3.level + amount));
+        let getDesc = (level) => "c_3=6^{" + level + "}";
+        let getInfo = (level) => "c_3=" + getC3(level).toString(0);
+        c3 = theory.createUpgrade(1, currency, new ExponentialCost(6, Math.log2(8.5)));
+        c3.getDescription = (_) => Utils.getMath(getDesc(c2.level));
+        c3.getInfo = (amount) => Utils.getMathTo(getInfo(c2.level), getInfo(c2.level + amount));
     }
 
     /////////////////////
     // Permanent Upgrades
-    theory.createPublicationUpgrade(0, currency, 1e10);
-    theory.createBuyAllUpgrade(1, currency, 1e20);
-    theory.createAutoBuyerUpgrade(2, currency, 1e40);
+    theory.createPublicationUpgrade(0, currency, 1e5);
+    theory.createBuyAllUpgrade(1, currency, 1e10);
+    theory.createAutoBuyerUpgrade(2, currency, 1e20);
 
     ///////////////////////
     //// Milestone Upgrades
